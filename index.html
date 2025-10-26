@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Farm Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>🌾 Idle Farm 🌾</h1>
+            <div id="stats">
+                <div class="stat">
+                    <span class="stat-label">Money:</span>
+                    <span id="money">$0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Farm Size:</span>
+                    <span id="farm-size">1x1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Income/sec:</span>
+                    <span id="income-rate">$0.00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="farm-view">
+            <canvas id="farm-canvas" width="600" height="400"></canvas>
+        </div>
+        
+        <div id="controls">
+            <h3>Upgrades</h3>
+            <div id="upgrade-buttons">
+                <button class="upgrade-btn" id="upgrade-property" data-upgrade="property">
+                    <div class="upgrade-name">🏞️ Expand Property</div>
+                    <div class="upgrade-desc">Increase farm size</div>
+                    <div class="upgrade-cost">Cost: $<span id="cost-property">100</span></div>
+                </button>
+                
+                <button class="upgrade-btn" id="upgrade-harvester" data-upgrade="harvester">
+                    <div class="upgrade-name">🚜 Better Harvester</div>
+                    <div class="upgrade-desc">Harvest faster</div>
+                    <div class="upgrade-cost">Cost: $<span id="cost-harvester">50</span></div>
+                </button>
+                
+                <button class="upgrade-btn" id="upgrade-planter" data-upgrade="planter">
+                    <div class="upgrade-name">🌱 Auto Planter</div>
+                    <div class="upgrade-desc">Plant crops automatically</div>
+                    <div class="upgrade-cost">Cost: $<span id="cost-planter">75</span></div>
+                </button>
+                
+                <button class="upgrade-btn" id="upgrade-crop" data-upgrade="crop">
+                    <div class="upgrade-name">🌽 Better Crops</div>
+                    <div class="upgrade-desc">Increase crop value</div>
+                    <div class="upgrade-cost">Cost: $<span id="cost-crop">200</span></div>
+                </button>
+                
+                <button class="action-btn" id="manual-harvest">
+                    <div class="upgrade-name">✋ Manual Harvest</div>
+                    <div class="upgrade-desc">Harvest all ready crops</div>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
