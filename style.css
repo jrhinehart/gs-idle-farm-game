@@ -35,6 +35,16 @@ body {
     font-size: 2em;
 }
 
+.automation-status {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    min-height: 20px;
+}
+
 #stats {
     display: flex;
     justify-content: space-around;
@@ -60,6 +70,78 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+/* Crop Selection Sidebar */
+.crop-selector {
+    position: fixed;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 220px;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.crop-selector.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.crop-selector h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1em;
+}
+
+#crop-selector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.crop-selector-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #86c232 0%, #61892f 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.crop-selector-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.crop-selector-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.crop-selector-emoji {
+    font-size: 1.5em;
+}
+
+.crop-selector-name {
+    flex: 1;
+    text-align: left;
+    font-weight: bold;
+}
+
+.crop-selector-cost {
+    font-size: 0.85em;
+    opacity: 0.9;
 }
 
 #farm-canvas {
@@ -140,6 +222,129 @@ body {
     background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.crop-choice-btn,
+.seed-shop-btn,
+.growth-upgrade-btn {
+    background: linear-gradient(135deg, #86c232 0%, #61892f 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.crop-choice-btn:hover,
+.seed-shop-btn:hover,
+.growth-upgrade-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.crop-choice-btn:disabled,
+.seed-shop-btn:disabled,
+.growth-upgrade-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.crop-choice-emoji,
+.seed-shop-emoji {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.crop-choice-name,
+.seed-shop-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.crop-choice-cost,
+.seed-shop-cost,
+.seed-shop-info {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.modal-close {
+    width: 100%;
+    padding: 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #c0392b;
+}
+
+.property-info {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.property-info p {
+    margin: 8px 0;
+    color: #333;
+}
+
+.property-cost {
+    font-size: 1.2em;
+    color: #86c232;
+    margin-top: 15px !important;
+}
+
 @media (max-width: 600px) {
     #farm-canvas {
         width: 100%;
@@ -147,5 +352,14 @@ body {
     
     #upgrade-buttons {
         grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .crop-selector {
+        max-width: 180px;
+        padding: 10px;
     }
 }

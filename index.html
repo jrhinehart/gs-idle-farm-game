@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idle Farm Game</title>
+    <title>GarlicSquash Idle Farmer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
         <div id="header">
-            <h1>🌾 Idle Farm 🌾</h1>
+            <h1>🧄 GarlicSquash Idle Farmer 🎃</h1>
             <div id="stats">
                 <div class="stat">
                     <span class="stat-label">Money:</span>
@@ -24,10 +24,16 @@
                     <span id="income-rate">$0.00</span>
                 </div>
             </div>
+            <div id="automation-status" class="automation-status"></div>
         </div>
         
         <div id="farm-view">
             <canvas id="farm-canvas" width="600" height="400"></canvas>
+            <!-- Crop Selection Sidebar -->
+            <div id="crop-selector" class="crop-selector">
+                <h4>Choose Crop</h4>
+                <div id="crop-selector-list"></div>
+            </div>
         </div>
         
         <div id="controls">
@@ -39,29 +45,69 @@
                     <div class="upgrade-cost">Cost: $<span id="cost-property">100</span></div>
                 </button>
                 
-                <button class="upgrade-btn" id="upgrade-harvester" data-upgrade="harvester">
-                    <div class="upgrade-name">🚜 Better Harvester</div>
-                    <div class="upgrade-desc">Harvest faster</div>
-                    <div class="upgrade-cost">Cost: $<span id="cost-harvester">50</span></div>
+                <button class="upgrade-btn" id="upgrade-seeds" data-upgrade="seeds">
+                    <div class="upgrade-name">🌱 Buy Seeds</div>
+                    <div class="upgrade-desc">Unlock new crop types</div>
+                    <div class="upgrade-cost">Open Shop</div>
                 </button>
                 
-                <button class="upgrade-btn" id="upgrade-planter" data-upgrade="planter">
-                    <div class="upgrade-name">🌱 Auto Planter</div>
-                    <div class="upgrade-desc">Plant crops automatically</div>
-                    <div class="upgrade-cost">Cost: $<span id="cost-planter">75</span></div>
+                <button class="upgrade-btn" id="upgrade-growth" data-upgrade="growth">
+                    <div class="upgrade-name">⚡ Growth Upgrades</div>
+                    <div class="upgrade-desc">Fertilizer, soil, irrigation</div>
+                    <div class="upgrade-cost">Open Menu</div>
                 </button>
                 
-                <button class="upgrade-btn" id="upgrade-crop" data-upgrade="crop">
-                    <div class="upgrade-name">🌽 Better Crops</div>
-                    <div class="upgrade-desc">Increase crop value</div>
-                    <div class="upgrade-cost">Cost: $<span id="cost-crop">200</span></div>
+                <button class="upgrade-btn" id="upgrade-automation" data-upgrade="automation">
+                    <div class="upgrade-name">🤖 Automation</div>
+                    <div class="upgrade-desc">Auto-harvest & auto-plant</div>
+                    <div class="upgrade-cost">Open Menu</div>
                 </button>
                 
                 <button class="action-btn" id="manual-harvest">
                     <div class="upgrade-name">✋ Manual Harvest</div>
                     <div class="upgrade-desc">Harvest all ready crops</div>
                 </button>
+                
+                <button class="action-btn" id="replant-all">
+                    <div class="upgrade-name">🔄 Replant All</div>
+                    <div class="upgrade-desc">Replant with last crop</div>
+                </button>
             </div>
+        </div>
+    </div>
+    
+    <!-- Property Expansion Modal -->
+    <div id="property-modal" class="modal">
+        <div class="modal-content">
+            <div id="property-content"></div>
+            <button class="modal-close" onclick="document.getElementById('property-modal').style.display='none'">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Seed Shop Modal -->
+    <div id="seed-shop-modal" class="modal">
+        <div class="modal-content">
+            <h2>🌱 Seed Shop</h2>
+            <div id="seed-shop-list" class="modal-list"></div>
+            <button class="modal-close" onclick="document.getElementById('seed-shop-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+    
+    <!-- Growth Upgrades Modal -->
+    <div id="growth-upgrades-modal" class="modal">
+        <div class="modal-content">
+            <h2>⚡ Growth Upgrades</h2>
+            <div id="growth-upgrades-list" class="modal-list"></div>
+            <button class="modal-close" onclick="document.getElementById('growth-upgrades-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+    
+    <!-- Automation Modal -->
+    <div id="automation-modal" class="modal">
+        <div class="modal-content">
+            <h2>🤖 Automation</h2>
+            <div id="automation-list" class="modal-list"></div>
+            <button class="modal-close" onclick="document.getElementById('automation-modal').style.display='none'">Close</button>
         </div>
     </div>
     
