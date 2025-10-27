@@ -9,7 +9,7 @@
 <body>
     <div id="game-container">
         <div id="header">
-            <h1>🧄 GarlicSquash Idle Farmer 🎃</h1>
+            <h1>GarlicSquash Idle Farmer</h1>
             <div id="stats">
                 <div class="stat">
                     <span class="stat-label">Money:</span>
@@ -28,7 +28,7 @@
         </div>
         
         <div id="farm-view">
-            <canvas id="farm-canvas" width="600" height="400"></canvas>
+            <canvas id="farm-canvas"></canvas>
             <!-- Crop Selection Sidebar -->
             <div id="crop-selector" class="crop-selector">
                 <h4>Choose Crop</h4>
@@ -40,37 +40,42 @@
             <h3>Upgrades</h3>
             <div id="upgrade-buttons">
                 <button class="upgrade-btn" id="upgrade-property" data-upgrade="property">
-                    <div class="upgrade-name">🏞️ Expand Property</div>
+                    <div class="upgrade-name">Expand Property</div>
                     <div class="upgrade-desc">Increase farm size</div>
                     <div class="upgrade-cost">Cost: $<span id="cost-property">100</span></div>
                 </button>
                 
                 <button class="upgrade-btn" id="upgrade-seeds" data-upgrade="seeds">
-                    <div class="upgrade-name">🌱 Buy Seeds</div>
+                    <div class="upgrade-name">Buy Seeds</div>
                     <div class="upgrade-desc">Unlock new crop types</div>
                     <div class="upgrade-cost">Open Shop</div>
                 </button>
                 
                 <button class="upgrade-btn" id="upgrade-growth" data-upgrade="growth">
-                    <div class="upgrade-name">⚡ Growth Upgrades</div>
+                    <div class="upgrade-name">Growth Upgrades</div>
                     <div class="upgrade-desc">Fertilizer, soil, irrigation</div>
                     <div class="upgrade-cost">Open Menu</div>
                 </button>
                 
                 <button class="upgrade-btn" id="upgrade-automation" data-upgrade="automation">
-                    <div class="upgrade-name">🤖 Automation</div>
+                    <div class="upgrade-name">Automation</div>
                     <div class="upgrade-desc">Auto-harvest & auto-plant</div>
                     <div class="upgrade-cost">Open Menu</div>
                 </button>
                 
                 <button class="action-btn" id="manual-harvest">
-                    <div class="upgrade-name">✋ Manual Harvest</div>
+                    <div class="upgrade-name">Manual Harvest</div>
                     <div class="upgrade-desc">Harvest all ready crops</div>
                 </button>
                 
                 <button class="action-btn" id="replant-all">
-                    <div class="upgrade-name">🔄 Replant All</div>
+                    <div class="upgrade-name">Replant All</div>
                     <div class="upgrade-desc">Replant with last crop</div>
+                </button>
+                
+                <button class="action-btn" id="toggle-auto-harvest" style="display: none;">
+                    <div class="upgrade-name">Toggle Auto-Harvest</div>
+                    <div class="upgrade-desc" id="auto-harvest-status">OFF</div>
                 </button>
             </div>
         </div>
@@ -87,7 +92,7 @@
     <!-- Seed Shop Modal -->
     <div id="seed-shop-modal" class="modal">
         <div class="modal-content">
-            <h2>🌱 Seed Shop</h2>
+            <h2>Seed Shop</h2>
             <div id="seed-shop-list" class="modal-list"></div>
             <button class="modal-close" onclick="document.getElementById('seed-shop-modal').style.display='none'">Close</button>
         </div>
@@ -96,7 +101,7 @@
     <!-- Growth Upgrades Modal -->
     <div id="growth-upgrades-modal" class="modal">
         <div class="modal-content">
-            <h2>⚡ Growth Upgrades</h2>
+            <h2>Growth Upgrades</h2>
             <div id="growth-upgrades-list" class="modal-list"></div>
             <button class="modal-close" onclick="document.getElementById('growth-upgrades-modal').style.display='none'">Close</button>
         </div>
@@ -105,7 +110,7 @@
     <!-- Automation Modal -->
     <div id="automation-modal" class="modal">
         <div class="modal-content">
-            <h2>🤖 Automation</h2>
+            <h2>Automation</h2>
             <div id="automation-list" class="modal-list"></div>
             <button class="modal-close" onclick="document.getElementById('automation-modal').style.display='none'">Close</button>
         </div>
